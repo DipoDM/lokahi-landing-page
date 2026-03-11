@@ -14,7 +14,7 @@
 
         <main class="content-page">
             <h1>Terms of Use</h1>
-            <p class="last-updated">Last Updated: March 3, 2025</p>
+            <p class="last-updated">Last Updated: March 11, 2026</p>
 
             <section>
                 <h2>1. Acceptance of Terms</h2>
@@ -53,23 +53,85 @@
             </section>
 
             <section>
-                <h2>4. Event Bookings and Payments</h2>
-                <h3>4.1 Booking Process</h3>
-                <p>
-                    When you book an event through the App, you enter into a contract with the event organizer.
-                    Lōkahi facilitates this transaction but is not a party to it.
-                </p>
+                <h2>4. Payment Processing and Refunds</h2>
 
-                <h3>4.2 Payment Processing</h3>
-                <p>
-                    All payments are processed securely through third-party payment processors. You agree to
-                    provide valid payment information.
-                </p>
+                <h3>4.1 Payment Processing</h3>
+                <ul>
+                    <li>We use Stripe to process payments for paid event tickets</li>
+                    <li>Payment card information is collected and stored securely by Stripe (PCI-DSS compliant)</li>
+                    <li>We do NOT store your full payment card numbers</li>
+                    <li>You authorize us to charge the total ticket price, including applicable fees</li>
+                    <li>All prices are displayed in USD unless otherwise specified</li>
+                </ul>
 
-                <h3>4.3 Cancellations and Refunds</h3>
+                <h3>4.2 Platform Fees</h3>
+                <ul>
+                    <li>We charge a platform fee on paid event tickets (typically 10% of ticket price)</li>
+                    <li>Stripe payment processing fees apply (typically 2.9% + $0.30 per transaction)</li>
+                    <li>All fees are disclosed before purchase completion</li>
+                    <li>Fees are non-refundable, even if a refund is issued</li>
+                </ul>
+
+                <h3>4.3 Host Payouts</h3>
+                <ul>
+                    <li>Event hosts must create a Stripe Connect account to receive payouts</li>
+                    <li>Hosts receive ticket revenue minus platform fees and payment processing fees</li>
+                    <li>Payouts are processed according to Stripe's payout schedule</li>
+                    <li>Hosts are responsible for providing accurate banking information</li>
+                    <li>Hosts may be required to provide tax information (e.g., SSN, EIN) to Stripe for IRS reporting</li>
+                </ul>
+
+                <h3>4.4 Refund Policy</h3>
+                <p>We operate a tiered refund policy based on time until event:</p>
+
+                <p><strong>48+ Hours Before Event: Automatic full refund (minus fees)</strong></p>
+                <ul>
+                    <li>Buyers can request refunds directly through the app</li>
+                    <li>Refunds are processed automatically without host approval</li>
+                    <li>Platform and payment processing fees are non-refundable</li>
+                </ul>
+
+                <p><strong>24-48 Hours Before Event: Host discretion</strong></p>
+                <ul>
+                    <li>Buyers can request refunds through the app</li>
+                    <li>Event host must approve or deny the refund request</li>
+                    <li>Host approval results in full refund (minus fees)</li>
+                    <li>Host denial means no refund is issued</li>
+                </ul>
+
+                <p><strong>Less Than 24 Hours Before Event: No refund eligible</strong></p>
+                <ul>
+                    <li>Refund requests are not accepted</li>
+                    <li>All sales are final</li>
+                    <li>Exceptions may be made at our sole discretion for extraordinary circumstances</li>
+                </ul>
+
+                <h3>4.5 Refund Processing</h3>
+                <ul>
+                    <li>Approved refunds are processed within 5-10 business days</li>
+                    <li>Refunds are issued to the original payment method</li>
+                    <li>Platform fees and payment processing fees are non-refundable</li>
+                    <li>We reserve the right to deny refunds for suspected fraud or abuse</li>
+                </ul>
+
+                <h3>4.6 Event Cancellation by Host</h3>
+                <ul>
+                    <li>If a host cancels an event, all attendees receive automatic full refunds (including fees)</li>
+                    <li>Hosts are responsible for canceling events with sufficient notice</li>
+                    <li>Repeated cancellations may result in account suspension</li>
+                </ul>
+
+                <h3>4.7 Payment Disputes</h3>
+                <ul>
+                    <li>Payment disputes should be reported to lokahi.helpline@gmail.com</li>
+                    <li>Chargebacks may result in account suspension pending investigation</li>
+                    <li>We reserve the right to provide transaction details to card issuers</li>
+                </ul>
+
                 <p>
-                    Cancellation and refund policies are set by individual event organizers. Please review the
-                    specific event's policy before booking.
+                    For detailed information about how Stripe handles payments, see
+                    <a href="https://stripe.com/legal/ssa" target="_blank">Stripe Terms of Service</a> and
+                    <a href="https://stripe.com/privacy" target="_blank">Stripe Privacy Policy</a>.
                 </p>
             </section>
 
