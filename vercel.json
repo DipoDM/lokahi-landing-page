@@ -3,6 +3,10 @@
     {
       "source": "/event/:id",
       "destination": "/event/index.html"
+    },
+    {
+      "source": "/auth-callback",
+      "destination": "/auth-callback.html"
     }
   ]
 }
