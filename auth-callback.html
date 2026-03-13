@@ -30,7 +30,7 @@
         }
         p {
             color: #666;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             font-size: 16px;
         }
         .spinner {
@@ -46,12 +46,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .fallback {
-            margin-top: 24px;
-            font-size: 14px;
-            color: #999;
-            display: none;
-        }
         .logo {
             width: 80px;
             height: 80px;
@@ -63,17 +57,36 @@
             justify-content: center;
             font-size: 40px;
         }
+        .open-app-btn {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            transition: transform 0.1s;
+        }
+        .open-app-btn:active {
+            transform: scale(0.98);
+        }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="logo">🌺</div>
-        <h1>Opening Lokahi...</h1>
-        <p id="message">Redirecting you to the app</p>
-        <div class="spinner"></div>
-        <p class="fallback" id="fallback">
-            If the app didn't open automatically, please open the Lokahi app manually.
-        </p>
+        <h1 id="title">Opening Lokahi...</h1>
+        <p id="message">Attempting to open the app</p>
+        <div class="spinner" id="spinner"></div>
+        <a href="#" class="open-app-btn hidden" id="openAppBtn">Open Lokahi App</a>
     </div>
 
     <script>
@@ -84,24 +97,54 @@
         // Construct deep link with all auth data
         const deepLink = `lokahi://auth-callback${search}${hash}`;
 
-        console.log('Supabase auth callback - redirecting to:', deepLink);
+        console.log('Supabase auth callback - deep link:', deepLink);
 
-        // Attempt redirect
-        window.location.href = deepLink;
+        const spinner = document.getElementById('spinner');
+        const openAppBtn = document.getElementById('openAppBtn');
+        const message = document.getElementById('message');
+        const title = document.getElementById('title');
 
-        // Show fallback message after 2 seconds
+        // Set up button click handler
+        openAppBtn.href = deepLink;
+        openAppBtn.onclick = (e) => {
+            e.preventDefault();
+            window.location.href = deepLink;
+            message.textContent = 'Opening app...';
+        };
+
+        // Try automatic redirect first
+        let attemptCount = 0;
+        function attemptRedirect() {
+            if (attemptCount < 2) {
+                attemptCount++;
+                console.log('Attempting redirect', attemptCount);
+                window.location.href = deepLink;
+            }
+        }
+
+        // First attempt immediately
+        attemptRedirect();
+
+        // Second attempt after 500ms
+        setTimeout(attemptRedirect, 500);
+
+        // After 2 seconds, show manual button
         setTimeout(() => {
-            document.getElementById('fallback').style.display = 'block';
-            document.getElementById('message').textContent = 'Authentication successful!';
+            spinner.classList.add('hidden');
+            openAppBtn.classList.remove('hidden');
+            title.textContent = 'Almost there!';
+            message.textContent = 'Tap the button below to open Lokahi';
         }, 2000);
 
-        // For iOS - try opening in a hidden iframe as fallback
-        setTimeout(() => {
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = deepLink;
-            document.body.appendChild(iframe);
-        }, 100);
+        // iOS fallback - try iframe
+        if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+            setTimeout(() => {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = deepLink;
+                document.body.appendChild(iframe);
+            }, 100);
+        }
     </script>
 </body>
 </html>
