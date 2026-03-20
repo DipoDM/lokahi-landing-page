@@ -128,13 +128,22 @@
         // Second attempt after 500ms
         setTimeout(attemptRedirect, 500);
 
-        // After 2 seconds, show manual button
+        // Try to close the window after redirect
         setTimeout(() => {
-            spinner.classList.add('hidden');
-            openAppBtn.classList.remove('hidden');
-            title.textContent = 'Almost there!';
-            message.textContent = 'Tap the button below to open Lokahi';
-        }, 2000);
+            console.log('Attempting to close window');
+            window.close();
+
+            // If window.close() didn't work, check if we're still open
+            setTimeout(() => {
+                // If we're still here, show the manual button
+                if (!window.closed) {
+                    spinner.classList.add('hidden');
+                    openAppBtn.classList.remove('hidden');
+                    title.textContent = 'Almost there!';
+                    message.textContent = 'Tap the button below to open Lokahi, then you can close this tab';
+                }
+            }, 500);
+        }, 1000);
 
         // iOS fallback - try iframe
         if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
