@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mofakolabs.lokahi",
+      "sha256_cert_fingerprints": [
+        "67:14:A4:24:9E:04:07:A6:05:48:0C:30:8E:A3:6B:27:41:DD:D3:E2:2C:66:21:30:12:75:F3:EC:9F:1D:E4:C4"
+      ]
+    }
+  }
+]

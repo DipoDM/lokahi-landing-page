@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "HNLXKH6PKX.com.mofakolabs.lokahi",
+        "paths": ["/event/*", "/event"]
+      }
+    ]
+  }
+}
